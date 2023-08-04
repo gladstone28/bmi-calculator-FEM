@@ -1,0 +1,475 @@
+@import url("./variables.css");
+/* Basic CSS reset */
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-family: "Inter", sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* General styles */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  color: var(--color-primary);
+}
+
+h1 {
+  font-size: 48px;
+  line-height: 110%;
+}
+
+h2 {
+  font-size: 32px;
+  line-height: 110%;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 29px;
+}
+
+h4 {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--color-secondary);
+}
+
+/* Layout*/
+
+.container {
+  width: 100%;
+  display: grid;
+  grid-row-gap: 72px;
+}
+
+header,
+.summary,
+.tips,
+.limits {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+header {
+  grid-template-rows: repeat(12, 1fr);
+  height: 1120px;
+}
+
+.bordered {
+  border-bottom: 2px solid black;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.header-content {
+  grid-column: 1 / 13;
+  grid-row: 1 / 8;
+  background: linear-gradient(290.1deg, #d6e6fe 0%, rgba(214, 252, 254, 0) 100%);
+  border-radius: 0px 0px 35px 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+  padding: 32px 24px 0 24px;
+}
+
+.header-content svg {
+  width: 40px;
+  height: 40px;
+}
+
+form {
+  grid-column: 2 / 12;
+  grid-row: 6 / 13;
+}
+
+img {
+  grid-column: span 12;
+  justify-self: center;
+  align-self: center;
+  margin-bottom: 48px;
+}
+
+.summary-text {
+  grid-column: 1 / 12;
+  justify-self: center;
+  align-self: center;
+  overflow-wrap: break-word;
+}
+
+.eating {
+  grid-column: span 12;
+}
+
+.exercise {
+  grid-column: span 12;
+}
+
+.sleep {
+  grid-column: span 12;
+}
+
+.limits-text {
+  grid-column: span 12;
+}
+
+.gender {
+  grid-column: span 12;
+}
+
+.age {
+  grid-column: span 12;
+}
+
+.muscle {
+  grid-column: span 12;
+}
+
+.pregnancy {
+  grid-column: span 12;
+}
+
+.race {
+  grid-column: span 12;
+}
+
+/* Element specific styles */
+
+/* Header styles */
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header-content h1,
+.header-content p {
+  max-width: 400px;
+}
+
+/* Custom radio styles */
+
+/* Hide the default radio */
+input[type="radio"] {
+  all: unset;
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: var(--color-white);
+  /* Not removed via appearance */
+  margin: 0;
+}
+
+/* Style the custom radio unchecked state */
+input[type="radio"] {
+  background-color: var(--color-white);
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  min-width: 31px;
+  min-height: 31px;
+  width: 31px;
+  height: 31px;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  /* This aligns our custom radio with the hidden native one */
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"]:checked {
+  background-color: var(--color-radio);
+}
+
+input[type="radio"]:hover {
+  cursor: pointer;
+  border-color: var(--color-blue);
+}
+
+/*Create a before element to be our custom radio when checked*/
+input[type="radio"]::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--color-blue);
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+.units-container label {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--color-primary);
+  display: flex;
+  gap: 18px;
+  justify-content: flex-start;
+  align-items: center;
+  width: 50%;
+}
+
+/* Custom number input styles */
+
+/* Remove arrows from inputs */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  all: unset;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  all: unset;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+/* Create a fake outline for the inputs so they look like they're grouped together */
+.input-wrapper {
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  height: 69px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.input-wrapper:hover {
+  cursor: pointer;
+  border-color: var(--color-blue);
+}
+
+.input-wrapper.focus {
+  /* Add your focused styles here */
+  border-color: var(--color-blue);
+}
+
+.input-wrapper input {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: -0.05em;
+  color: var(--color-primary);
+  margin: 20px 0;
+  margin-left: 24px;
+  width: calc(100% - 48px);
+  flex-shrink: 0;
+}
+
+.input-wrapper label {
+  margin: 20px 0;
+  margin-right: 24px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: -0.05em;
+  color: var(--color-blue);
+  width: fit-content;
+}
+
+.measurements-container label {
+  width: 100%;
+}
+
+.measurements-container span {
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+/* Form element styles */
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  gap: 24px;
+}
+
+form h4 {
+  align-self: flex-start;
+}
+
+.units-container {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 24px;
+  width: 100%;
+}
+
+.measurements-container {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+}
+
+.imperial {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.results-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 24px;
+  gap: 24px;
+  width: 100%;
+  /* max-width: 264px; */
+  height: 257px;
+  background: linear-gradient(90deg, #345ff7 0%, #587dff 100%);
+  border-radius: 16px;
+}
+
+.results-card h3,
+.results-card p {
+  color: var(--color-white);
+}
+.bmi-score {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.results {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 48px;
+}
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.placeholder h4 {
+  color: var(--color-white);
+}
+/* Summary section styles */
+
+.summary-text {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 0 24px;
+}
+
+/* Tips section styles */
+.tips {
+  padding: 56px 29px;
+  gap: 40px 0;
+  background: linear-gradient(290.1deg, rgba(214, 230, 254, 0.25) 0%, rgba(214, 252, 254, 0) 100%);
+}
+
+.tips-card {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  justify-content: flex-start;
+}
+
+.tips-card svg {
+  width: 64px;
+  height: 64px;
+  flex: none;
+  opacity: 1;
+}
+
+.tips-text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Limits section styles */
+.limits {
+  gap: 16px;
+  padding: 0 24px;
+  margin-bottom: 96px;
+}
+
+.limits-text {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.card {
+  background: var(--color-white);
+  box-shadow: 16px 32px 56px rgba(143, 174, 207, 0.25);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tips-card-header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.hidden {
+  display: none;
+}
